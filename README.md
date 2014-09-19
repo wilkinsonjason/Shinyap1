@@ -7,3 +7,5 @@ A distribution of hair and eye color and sex in 592 statistics students from a s
 
 Using the conditional probability a plot is developed and the maximum likely eye color identified.
 
+The Ap is available at:
+https://wilkinsonj.shinyapps.io/Hair_Eye_Sex_ap/
