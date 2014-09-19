@@ -1,0 +1,80 @@
+Presentation for Shiny App Eye Color Predictor
+========================================================
+author: Jason Wilkinson
+date: `r date()`
+
+
+Shiny App Context
+========================================================
+type: section
+transition: rotate
+transition-speed: slow
+
+This presentation is for the Shiny App Eye Color Predictor
+which can be found at:
+
+https://wilkinsonj.shinyapps.io/Hair_Eye_Sex_ap/
+
+The Data:
+
+<small>The data used in this app is from the HairEyeColor dataset in R.
+It contains the information for hair color, eye color,
+and sex crosstabulated for 592 statistic students at the 
+University of Delaware reported by Snee (1974).</small>
+
+The Data (HairEyeColor)
+========================================================
+transition: rotate
+transition-speed: slow
+
+```{r, echo=FALSE}
+(HairEyeColor)
+
+```
+
+Why This App is Useful
+===
+type: subsection
+transition: rotate
+incremental: true
+
+<small>
+-  It is understood that while the data may not be extendable universally across the globe to
+   the population of today, it is a sufficiently large dataset as to give the user a general idea of the
+   most likely eye color given a person's hair color and sex.
+   
+-  This app presents a quick reference for gleaning knowledge.
+
+-  Further app expansions will help couples predict possible hair and eye color combinations
+   for their children by including dominant, recessive trait information.
+   
+</small>
+
+
+
+Algorithm, Output
+========================================================
+type: subsection
+transition: rotate
+transition-speed: slow
+
+<small>The app filters the dataset by selected hair color and sex. The most likely eye color
+corresponds to the maximum of that which is left. The app then shows the probability of that
+corresponding eye color and reveals a plot for all of the probabilities. A sample of the output
+plot for Male, Blond:</small>
+
+```{r, echo=FALSE}
+newdf <- HairEyeColor[, , 1]
+newdf <- t(newdf)
+X <- "Blond"
+newdf2 <- newdf[,eval(X)]
+newdf2 <- newdf2/ sum(newdf2)
+newdf2 <- round(newdf2, digits = 2)
+barplot(newdf2, col = c("brown", "cornflowerblue", "gold4", "yellowgreen"),
+                    main = "Eye Color Probability")
+                text(x= c(.75, 1.9, 3.1 , 4.25 ), y= .02, cex = 1.1, 
+                    labels=as.character(newdf2[1:4]), col = "White")
+
+
+```
+
